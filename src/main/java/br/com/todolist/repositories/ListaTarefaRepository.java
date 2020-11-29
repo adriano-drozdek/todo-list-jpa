@@ -16,7 +16,7 @@ public class ListaTarefaRepository implements Serializable {
 	@Inject
 	private EntityManager entityMananger;
 	
-	public List<ListaTarefa> listatrTudo() {
+	public List<ListaTarefa> listarTudo() {
 		return entityMananger.createQuery("from lista_tarefa", ListaTarefa.class).getResultList();
 		
 	}
