@@ -17,15 +17,31 @@ public class ListaTarefaBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Inject
-    private ListaTarefaRepository repository;
+	private ListaTarefaRepository repository;
 
-    private List<ListaTarefa> listaTarefas;
+	private List<ListaTarefa> listaTarefas;
 
-    public void Consultar() {
-        listaTarefas = repository.listarTudo();
-    }
+	private ListaTarefa novaTarefa;
 
-    public List<ListaTarefa> getListaTarefas() {
-        return listaTarefas;
-    }
+	public void consultar() {
+		listaTarefas = repository.listarTudo();
+	}
+
+	public void criarNovaTarefa() {
+		novaTarefa = new ListaTarefa();
+	}
+
+	public void salvarNovaTarefa() {
+		repository.salvar(novaTarefa);
+		consultar();
+	}
+
+	public List<ListaTarefa> getListaTarefas() {
+		return listaTarefas;
+	}
+
+	public ListaTarefa getNovaTarefa() {
+		return novaTarefa;
+	}
+
 }
